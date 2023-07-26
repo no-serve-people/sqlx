@@ -848,7 +848,10 @@ func MapScan(r ColScanner, dest map[string]interface{}) error {
 		return err
 	}
 
-	for i, column := range columns {
+	
+	ele := removeDuplicateElement(columns)
+
+	for i, column := range ele {
 		dest[column] = *(values[i].(*interface{}))
 	}
 
